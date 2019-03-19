@@ -37,10 +37,9 @@ export default class PartyToChooseItem extends Component {
     }
 
     handleSubmitPress() {
-        console.log("Do something..");
         Alert.alert(
             `Thanks for voting!` ,
-            `Lets see the online results!`
+            `Lets see the top 5 parties so far!`
         )
         this.props.disableButtonsFunc();
 
@@ -72,11 +71,11 @@ export default class PartyToChooseItem extends Component {
 
 
     render() {
-        var paryName = (this.props.partyName).replace('-' , '');
+        var paryName = (this.props.partyName).replace(/-/g , '');
         return(
             <View style={styles.partyContainer}>
-                <TouchableOpacity style={this.props.disableButtonsFlag ? styles.disableButtonStyle : null} onPress={this.handlePress} disabled={this.props.disableButtonsFlag}>
-                        <Image style={styles.imageStyle} source={partiesImages[paryName]} />
+                <TouchableOpacity style={this.props.isDisabled ? styles.disableButtonStyle : null} onPress={this.handlePress} disabled={this.props.isDisabled}>
+                        <Image style={styles.partiesImagesStyle} source={partiesImages[paryName]} />
                         <Text style={styles.textStyle}>{this.props.partyName}</Text>
                 </TouchableOpacity>
             </View>
@@ -88,22 +87,23 @@ export default class PartyToChooseItem extends Component {
 const styles = StyleSheet.create({
     partyContainer: {
         height: 170,
-        width: 186,
+        width: 185,
         justifyContent: 'flex-end',
         marginBottom: 3,
         backgroundColor: '#bdbdbd',
         borderWidth: 1,
-        // borderColor: 'green'
     },
 
     textStyle: {
+        width: 185,
         backgroundColor: '#8e8e8e',
         textAlign: 'center',
         fontSize: 24
+
     },
     
     partiesImagesStyle: {
-        width: 184
+        width: 185
     },
 
     disableButtonStyle: {

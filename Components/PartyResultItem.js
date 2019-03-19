@@ -57,7 +57,6 @@ const styles = StyleSheet.create({
         height: 90,
         borderRadius: 45,
         marginLeft: 4
-        // borderColor: "black"
     },
 
     textStyle: {

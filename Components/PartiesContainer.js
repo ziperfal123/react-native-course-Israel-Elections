@@ -29,17 +29,18 @@ export default class PartiesContainer extends Component {
         .catch( err => {console.log(err)});
     }
 
-
     disableButtonsFunc() {
         console.log(`in disableButtons()`);
         this.setState({disableBtnFlag: true});
-        this.props.navigation.navigate(`StatusScreen`);
+        this.props.justDoIt();
+        this.props.navigation.navigate(`StatusScreen`)
+
     }
 
     eachItem(partyName , index) {
         return (
             <View>
-                <PartyToChooseItem partyName={partyName} disableButtonsFunc ={this.disableButtonsFunc} disableButtonsFlag={this.state.disableBtnFlag} />
+                <PartyToChooseItem partyName={partyName} disableButtonsFunc={this.disableButtonsFunc} isDisabled={this.props.isDisabled} />
             </View>
             
         )
@@ -47,20 +48,16 @@ export default class PartiesContainer extends Component {
 
 
 
-    // eachItem = (partyName , index) => {
-    //     return (
-    //         <View>
-    //             <PartyToChooseItem partyName={partyName}></PartyToChooseItem>
-    //         </View>
-            
-    //     )
-    // }
-
-
     render() {
         return(
-            <View style={styles.container}  >
-                {this.state.partiesNames.map(this.eachItem)}
+            <View>
+                <View style={styles.container}>
+                    {this.state.partiesNames.map(this.eachItem)}
+                </View>
+                {this.state.disableBtnFlag ? (
+                // <View style={styles.messageStyle}></View> 
+                null
+                ) : null}
             </View>
         );
     }
@@ -71,10 +68,18 @@ export default class PartiesContainer extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 0.9,
         flexDirection: 'row',
         flexWrap: 'wrap',
         width: '100%',
         justifyContent: 'space-between',
+    },
+
+    messageStyle: {
+        width: '100%',
+        height: 200,
+        backgroundColor: 'red',
+        position: 'absolute',
+
+
     }
 })

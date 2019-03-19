@@ -40,7 +40,6 @@ export default class Header extends Component {
       marginBottom: 15,
 }
 
-
     return(
       <View style={headerStyle}>
         <Text style={styles.title}>Elections 2019</Text>
@@ -64,7 +63,7 @@ const styles = StyleSheet.create({
 
   btnStyle: {
     alignItems: 'center',
-    width: 60,
+    width: 70,
     height: 52,
     marginTop: 10,
     marginLeft: 35,
