@@ -1,19 +1,7 @@
-import React from 'react';
-import {StyleSheet, View , ScrollView} from 'react-native';
+import React from 'react'
+import { StyleSheet, View, ScrollView } from 'react-native'
 import Header from '../Components/Header'
 import PartiesResultContainer from '../Components/PartiesResultContainer'
-
-const StatusScreen = (props) => {
-    return (
-        <View style={styles.container}>
-          <Header navigation={props.navigation} screenToGo='VoteScreen' />
-          <ScrollView>
-            <PartiesResultContainer />
-          </ScrollView>
-        </View>
-    );
-}
-export default StatusScreen;
 
 /* ..styles.. */
 const styles = StyleSheet.create({
@@ -22,7 +10,18 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     height: 1000,
     justifyContent: 'flex-start',
-    backgroundColor: '#33313b',
-  },
-});
+    backgroundColor: '#33313b'
+  }
+})
 
+const StatusScreen = props => {
+  return (
+    <View style={styles.container}>
+      <Header navigation={props.navigation} screenToGo="VoteScreen" />
+      <ScrollView>
+        <PartiesResultContainer />
+      </ScrollView>
+    </View>
+  )
+}
+export default StatusScreen

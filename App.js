@@ -1,45 +1,47 @@
-import React, {Component} from 'react';
-import {StyleSheet} from 'react-native';
-import { createAppContainer, createStackNavigator, SafeAreaView} from 'react-navigation'
+import React, { Component } from 'react'
+import { StyleSheet } from 'react-native'
+import { createAppContainer, createStackNavigator, SafeAreaView } from 'react-navigation'
 import VoteScreen from './screens/VoteScreen'
 import StatusScreen from './screens/StatusScreen'
+// import Header from './Components/Header'
 
-export default class App extends Component {   
-  render() {
+const styles = StyleSheet.create({
+  bla: {
+    flex: 1,
+    backgroundColor: '#87c0cd'
+  }
+})
+
+export default class App extends Component {
+  constructor(props) {
+    super(props)
     this.state = {
       textContent: 'status'
     }
+  }
+  render() {
     return (
-      <SafeAreaView style={{flex: 1, backgroundColor: '#87c0cd'}}>
-        <AppContainer uriPrefix='/app'/> 
+      <SafeAreaView style={styles.bla}>
+        <AppContainer uriPrefix="/app" />
       </SafeAreaView>
-    );
+    )
   }
 }
 
 const AppStackNavigator = createStackNavigator({
-  StatusScreen: {
-    screen: StatusScreen,
-    navigationOptions: {
-      header: null
-    }
-  },
   VoteScreen: {
     screen: VoteScreen,
     navigationOptions: {
+      // hedaer: <Header navigation={props.navigation} screenToGo='VoteScreen'/>
       header: null
     }
   },
+  StatusScreen: {
+    screen: StatusScreen,
+    navigationOptions: {
+      // hedaer: <Header navigation={props.navigation} screenToGo='StatusScreen'/>
+      header: null
+    }
+  }
 })
-const AppContainer = createAppContainer(AppStackNavigator);
-
-/* ..styles.. */
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    height: 1000,
-    justifyContent: 'flex-start',
-  },
-});
-
+const AppContainer = createAppContainer(AppStackNavigator)

@@ -1,46 +1,10 @@
-import React, { Component } from 'react';
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
-
-export default class Header extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      btnContent: 'Status',
-      screenToGo: 'StatusScreen'
-    }
-    this.handlePress = this.handlePress.bind(this);
-  }
-
-  componentWillMount() {
-    if (this.props.screenToGo == 'StatusScreen') {
-        this.setState({btnContent: 'Status'})
-    }
-    else {
-      this.setState({btnContent: 'Vote'})
-    }
-  }
-
-  handlePress() {
-    let target = this.props.screenToGo;
-    this.props.navigation.navigate(target)
-  }
-
-  render() {
-    return(
-      <View style={styles.headerStyle}>
-        <Text style={styles.title}>Elections 2019</Text>
-        <TouchableOpacity style={styles.btnStyle} onPress={this.handlePress}>
-          <Text style={{color:'#daf9f9' , fontSize: 18}}>{this.state.btnContent}</Text>
-        </TouchableOpacity>
-      </View>
-    )
-  }
-}
+import React, { Component } from 'react'
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 
 /* ..styles.. */
 const styles = StyleSheet.create({
   headerStyle: {
-    height: 75 , 
+    height: 75,
     flexDirection: 'row',
     backgroundColor: '#87c0cd',
     marginBottom: 8
@@ -63,8 +27,45 @@ const styles = StyleSheet.create({
     marginLeft: 38,
     paddingTop: 15,
     backgroundColor: '#113f67',
-    borderRadius: 8,
+    borderRadius: 8
+  },
+  btnTextStyle: {
+    color: '#daf9f9',
+    fontSize: 18
   }
-});
+})
 
+export default class Header extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      btnContent: 'Status',
+      screenToGo: 'StatusScreen'
+    }
+    this.handlePress = this.handlePress.bind(this)
+  }
 
+  componentWillMount() {
+    if (this.props.screenToGo == 'StatusScreen') {
+      this.setState({ btnContent: 'Status' })
+    } else {
+      this.setState({ btnContent: 'Vote' })
+    }
+  }
+
+  handlePress() {
+    const target = this.props.screenToGo
+    this.props.navigation.navigate(target)
+  }
+
+  render() {
+    return (
+      <View style={styles.headerStyle}>
+        <Text style={styles.title}>Elections 2019</Text>
+        <TouchableOpacity style={styles.btnStyle} onPress={this.handlePress}>
+          <Text style={styles.btnTextStyle}>{this.state.btnContent}</Text>
+        </TouchableOpacity>
+      </View>
+    )
+  }
+}
