@@ -8,9 +8,7 @@ export default class PartiesContainer extends Component {
         this.state = {
             partiesNames: [],
             disableBtnFlag: false
-
         }
-
         this.eachItem = this.eachItem.bind(this)
         this.disableButtonsFunc = this.disableButtonsFunc.bind(this);
     }
@@ -32,9 +30,8 @@ export default class PartiesContainer extends Component {
     disableButtonsFunc() {
         console.log(`in disableButtons()`);
         this.setState({disableBtnFlag: true});
-        this.props.justDoIt();
+        this.props.disableButtonsAtVoteScreen();
         this.props.navigation.navigate(`StatusScreen`)
-
     }
 
     eachItem(partyName , index) {
@@ -42,11 +39,8 @@ export default class PartiesContainer extends Component {
             <View>
                 <PartyToChooseItem partyName={partyName} disableButtonsFunc={this.disableButtonsFunc} isDisabled={this.props.isDisabled} />
             </View>
-            
         )
     }
-
-
 
     render() {
         return(
@@ -55,17 +49,16 @@ export default class PartiesContainer extends Component {
                     {this.state.partiesNames.map(this.eachItem)}
                 </View>
                 {this.state.disableBtnFlag ? (
-                // <View style={styles.messageStyle}></View> 
-                null
+                <View style={styles.messageStyle}>
+                    <Text>You already voted..</Text>
+                </View>  
                 ) : null}
             </View>
         );
     }
 }
 
-
 /*..Styles..*/
-
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
@@ -73,13 +66,11 @@ const styles = StyleSheet.create({
         width: '100%',
         justifyContent: 'space-between',
     },
-
     messageStyle: {
         width: '100%',
         height: 200,
         backgroundColor: 'red',
         position: 'absolute',
-
-
+        marginTop: 150,
     }
 })

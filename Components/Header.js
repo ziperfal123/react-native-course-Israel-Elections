@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {StyleSheet, Text, View, TouchableOpacity, Button} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 
 export default class Header extends Component {
   constructor(props){
@@ -7,8 +7,8 @@ export default class Header extends Component {
     this.state = {
       btnContent: 'Status',
       screenToGo: 'StatusScreen'
-
     }
+    this.handlePress = this.handlePress.bind(this);
   }
 
   componentWillMount() {
@@ -20,53 +20,47 @@ export default class Header extends Component {
     }
   }
 
-  handlePress = () => {
+  handlePress() {
     let target = this.props.screenToGo;
     this.props.navigation.navigate(target)
   }
 
-
-
   render() {
-
-    let headerStyle = {
-      height: 75 , 
-      flexDirection: 'row',
-      marginTop: this.props.marginTop,
-      justifyContent: 'center',
-      backgroundColor: '#87c0cd',
-      borderColor: '##0c3e6a',
-      borderWidth: 0.6,
-      marginBottom: 15,
-}
-
     return(
-      <View style={headerStyle}>
+      <View style={styles.headerStyle}>
         <Text style={styles.title}>Elections 2019</Text>
         <TouchableOpacity style={styles.btnStyle} onPress={this.handlePress}>
-          <Text style={{color:'#daf9f9' , fontSize: 16}}>{this.state.btnContent}</Text>
+          <Text style={{color:'#daf9f9' , fontSize: 18}}>{this.state.btnContent}</Text>
         </TouchableOpacity>
       </View>
     )
   }
 }
 
-
+/* ..styles.. */
 const styles = StyleSheet.create({
+  headerStyle: {
+    height: 75 , 
+    flexDirection: 'row',
+    backgroundColor: '#87c0cd',
+    marginBottom: 8
+  },
   title: {
-    fontSize: 34,
+    fontSize: 36,
     textAlign: 'center',
     position: 'relative',
-    top: 17,
-    left: 12
+    top: 12,
+    left: 18,
+    fontFamily: 'Iowan Old Style',
+    fontWeight: 'bold',
+    color: '#33313b'
   },
-
   btnStyle: {
     alignItems: 'center',
-    width: 70,
-    height: 52,
+    width: 73,
+    height: 55,
     marginTop: 10,
-    marginLeft: 35,
+    marginLeft: 38,
     paddingTop: 15,
     backgroundColor: '#113f67',
     borderRadius: 8,

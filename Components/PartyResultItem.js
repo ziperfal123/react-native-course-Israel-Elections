@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
-import {View, Text, Button, TouchableOpacity, Image , StyleSheet} from 'react-native'
-
+import React from 'react';
+import {View, Text, Image , StyleSheet} from 'react-native'
 
 const peopleImages = {
     likud: require('../assets/peopleImages/likud.jpg'),
@@ -20,52 +19,40 @@ const peopleImages = {
     magen: require('../assets/peopleImages/magen.jpg')
 }
 
-
-export default class PartyResultItem extends Component {
-    constructor(props) {
-        super(props)
-    }
-
-    render() {
-        var partyName = (this.props.partyName).replace(/-/g , '');
-        console.log("partyName:")
-        console.log(partyName)
-
-        return (
-            <View style={styles.itemContainer}> 
-                <Image style={styles.imageStyle} source={peopleImages[partyName]} />
-                <Text style={styles.textStyle}>{this.props.partyName}</Text>
-                <Text style={styles.scoreStyle}>{this.props.partyScore}%</Text>
-            </View>
-        )
-    }
+const PartyResultItem = (props) => {
+    var partyName = (props.partyName).replace(/-/g , '');
+    return (
+        <View style={styles.itemContainer}> 
+            <Image style={styles.imageStyle} source={peopleImages[partyName]} />
+            <Text style={styles.textStyle}>{props.partyName}</Text>
+            <Text style={styles.scoreStyle}>{props.partyScore}%</Text>
+        </View>
+    )
 }
+export default PartyResultItem;
 
 
+/* ..styles.. */
 const styles = StyleSheet.create({
     itemContainer: {
         flex: 1,
         flexDirection: 'row',
-        justifyContent: 'flex-start',
         alignItems: 'center',
         backgroundColor: "#113f67",
-        marginTop: 14,
+        marginTop: 24,
     },
-
     imageStyle: {
         width: 90,
         height: 90,
         borderRadius: 45,
         marginLeft: 4
     },
-
     textStyle: {
         fontSize: 24,
         color: '#929292',
         width: '44%',
         marginLeft: 10,
     },
-
     scoreStyle: {
         textAlign: 'center',
         fontSize: 24,
@@ -73,5 +60,4 @@ const styles = StyleSheet.create({
         width: '20%',
         marginLeft: 16
     }
-
 })

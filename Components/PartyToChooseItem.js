@@ -19,19 +19,12 @@ const partiesImages = {
     magen: require('../assets/partiesImages/magen.jpg')
 }
     
-
-
-
-
-
-
 export default class PartyToChooseItem extends Component {
     constructor(props) {
         super(props);
         this.state = {
             partyName: ''
         }
-
         this.handlePress = this.handlePress.bind(this)
         this.handleSubmitPress = this.handleSubmitPress.bind(this)
     }
@@ -42,7 +35,6 @@ export default class PartyToChooseItem extends Component {
             `Lets see the top 5 parties so far!`
         )
         this.props.disableButtonsFunc();
-
     }
 
     handlePress() {
@@ -68,8 +60,6 @@ export default class PartyToChooseItem extends Component {
         // .catch(err => console.log(err))
     }
 
-
-
     render() {
         var paryName = (this.props.partyName).replace(/-/g , '');
         return(
@@ -83,7 +73,7 @@ export default class PartyToChooseItem extends Component {
     }
 }
 
-
+/* ..styles.. */
 const styles = StyleSheet.create({
     partyContainer: {
         height: 170,
@@ -93,21 +83,16 @@ const styles = StyleSheet.create({
         backgroundColor: '#bdbdbd',
         borderWidth: 1,
     },
-
     textStyle: {
         width: 185,
         backgroundColor: '#8e8e8e',
         textAlign: 'center',
         fontSize: 24
-
     },
-    
     partiesImagesStyle: {
         width: 185
     },
-
     disableButtonStyle: {
         opacity: 0.35
     }
-
 })

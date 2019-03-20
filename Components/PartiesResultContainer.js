@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import {View, Text, Button, TouchableOpacity, Image, ScrollView , StyleSheet} from 'react-native'
-
+import {View, StyleSheet} from 'react-native'
 import PartyResultItem from './PartyResultItem'
-
 
 export default class PartiesResultContainer extends Component {
     constructor(props) {
@@ -48,8 +46,6 @@ export default class PartiesResultContainer extends Component {
         );
     }
 
-
-
     render() {
         return(
             <View>
@@ -59,7 +55,7 @@ export default class PartiesResultContainer extends Component {
     }
 }
 
-
+/* ..styles.. */
 const styles = StyleSheet.create({
     container: {
         flex: 1,

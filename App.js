@@ -1,50 +1,39 @@
 import React, {Component} from 'react';
 import {StyleSheet} from 'react-native';
-import { createAppContainer, createStackNavigator} from 'react-navigation'
-
+import { createAppContainer, createStackNavigator, SafeAreaView} from 'react-navigation'
 import VoteScreen from './screens/VoteScreen'
 import StatusScreen from './screens/StatusScreen'
 
-
-
 export default class App extends Component {   
-
   render() {
     this.state = {
       textContent: 'status'
     }
     return (
-      <AppContainer
-      uriPrefix="/app"
-      /> 
+      <SafeAreaView style={{flex: 1, backgroundColor: '#87c0cd'}}>
+        <AppContainer uriPrefix='/app'/> 
+      </SafeAreaView>
     );
   }
 }
 
-
 const AppStackNavigator = createStackNavigator({
-
-  VoteScreen: {
-    screen: VoteScreen,
-    navigationOptions: {
-      header: null
-    }
-  },
-
   StatusScreen: {
     screen: StatusScreen,
     navigationOptions: {
       header: null
     }
   },
-
+  VoteScreen: {
+    screen: VoteScreen,
+    navigationOptions: {
+      header: null
+    }
+  },
 })
-
 const AppContainer = createAppContainer(AppStackNavigator);
 
-
-
-
+/* ..styles.. */
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -52,6 +41,5 @@ const styles = StyleSheet.create({
     height: 1000,
     justifyContent: 'flex-start',
   },
-
 });
 

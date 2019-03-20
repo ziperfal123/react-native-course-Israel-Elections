@@ -1,10 +1,7 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View , ScrollView, Button} from 'react-native';
-
+import {Platform, StyleSheet, View , ScrollView} from 'react-native';
 import Header from '../Components/Header'
 import PartiesContainer from '../Components/PartiesContainer'
-
-
 
 export default class VoteScreen extends Component {
   constructor(props) {
@@ -13,36 +10,26 @@ export default class VoteScreen extends Component {
       textContent: 'status',
       isDisabled: false
     }
-
-    this.justDoIt = this.justDoIt.bind(this)
+    this.disableButtonsAtVoteScreen = this.disableButtonsAtVoteScreen.bind(this)
   }
 
-  componentDidMount() {
-    console.log("DDDDDDDDDDD");
-    console.log(this.state.isDisabled);
-    }
-
-
-  justDoIt() {
+  disableButtonsAtVoteScreen() {
     this.setState({isDisabled: true})
-    console.log("bla")
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <Header style= {styles.bla} marginTop={43} navigation={this.props.navigation} screenToGo='StatusScreen' />
+        <Header navigation={this.props.navigation} screenToGo='StatusScreen' />
         <ScrollView>
-            <PartiesContainer navigation={this.props.navigation} isDisabled={this.state.isDisabled} justDoIt={this.justDoIt}/>
+            <PartiesContainer navigation={this.props.navigation} isDisabled={this.state.isDisabled} disableButtonsAtVoteScreen={this.disableButtonsAtVoteScreen}/>
         </ScrollView>
       </View>
     );
   }
-
 }
 
-
-
+/* ..styles.. */
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -51,6 +38,5 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     backgroundColor: '#33313b',
   },
-
 });
 
