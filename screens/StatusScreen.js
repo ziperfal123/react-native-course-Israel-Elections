@@ -24,4 +24,5 @@ const StatusScreen = props => {
     </View>
   )
 }
+
 export default StatusScreen

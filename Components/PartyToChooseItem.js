@@ -1,23 +1,6 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, View, Image, TouchableOpacity, Alert } from 'react-native'
-
-const partiesImages = {
-  likud: require('../assets/partiesImages/likud.jpg'),
-  avoda: require('../assets/partiesImages/avoda.jpg'),
-  kahollavan: require('../assets/partiesImages/kahol-lavan.jpg'),
-  merez: require('../assets/partiesImages/merez.jpg'),
-  kulanu: require('../assets/partiesImages/kulanu.jpg'),
-  yaminhadash: require('../assets/partiesImages/yamin-hadash.jpg'),
-  israelbeitenu: require('../assets/partiesImages/israel-beitenu.jpg'),
-  shas: require('../assets/partiesImages/shas.jpg'),
-  yahaduthatora: require('../assets/partiesImages/yahadut-hatora.jpg'),
-  raamtaal: require('../assets/partiesImages/raam-taal.jpg'),
-  balad: require('../assets/partiesImages/balad.jpg'),
-  zehut: require('../assets/partiesImages/zehut.jpg'),
-  gesher: require('../assets/partiesImages/gesher.jpg'),
-  ihudmiflagothayamin: require('../assets/partiesImages/ihud-miflagot-hayamin.jpg'),
-  magen: require('../assets/partiesImages/magen.jpg')
-}
+import ImagesPaths from './ImagesPaths'
 
 /* ..styles.. */
 const styles = StyleSheet.create({
@@ -31,8 +14,9 @@ const styles = StyleSheet.create({
   },
   textStyle: {
     width: 185,
-    backgroundColor: '#8e8e8e',
     textAlign: 'center',
+    backgroundColor: '#9e999b',
+    color: '#1c070f',
     fontSize: 24
   },
   partiesImagesStyle: {
@@ -43,7 +27,7 @@ const styles = StyleSheet.create({
   }
 })
 
-export default class PartyToChooseItem extends Component {
+class PartyToChooseItem extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -70,19 +54,15 @@ export default class PartyToChooseItem extends Component {
         { text: 'OK', onPress: this.handleSubmitPress }
       ]
     )
-    // const url= `https://isr-elections.herokuapp.com/api/parties/vote/${this.props.partyName}`;
-    // fetch(url, {
-    //     method: 'POST',
-    //     headers: {'Content-Type': 'application/json'},
-    // })
-    // .then((response) => console.log(response))
-    // // if response.status == 200 disable all buttons, if 400 print message.
-    // // .then((response) => response.statusCode === 200 ? this.setState({isSuccessVote: true}) : alert(data.Comment) )
-    // .catch(err => console.log(err))
+    const url = `https://isr-elections.herokuapp.com/api/parties/vote/${this.props.partyName}`
+    fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' }
+    })
   }
 
   render() {
-    let paryName = this.props.partyName.replace(/-/g, '')
+    const paryName = this.props.partyName.replace(/-/g, '')
     return (
       <View style={styles.partyContainer}>
         <TouchableOpacity
@@ -90,10 +70,12 @@ export default class PartyToChooseItem extends Component {
           onPress={this.handlePress}
           disabled={this.props.isDisabled}
         >
-          <Image style={styles.partiesImagesStyle} source={partiesImages[paryName]} />
+          <Image style={styles.partiesImagesStyle} source={ImagesPaths.partiesLogos[paryName]} />
           <Text style={styles.textStyle}>{this.props.partyName}</Text>
         </TouchableOpacity>
       </View>
     )
   }
 }
+
+export default PartyToChooseItem

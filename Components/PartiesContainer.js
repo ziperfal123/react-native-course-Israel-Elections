@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, Alert } from 'react-native'
 import PartyToChooseItem from './PartyToChooseItem'
 
 /*..Styles..*/
@@ -9,17 +9,10 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     width: '100%',
     justifyContent: 'space-between'
-  },
-  messageStyle: {
-    width: '100%',
-    height: 200,
-    backgroundColor: 'red',
-    position: 'absolute',
-    marginTop: 150
   }
 })
 
-export default class PartiesContainer extends Component {
+class PartiesContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -47,7 +40,6 @@ export default class PartiesContainer extends Component {
   }
 
   disableButtonsFunc() {
-    console.log(`in disableButtons()`)
     this.setState({ disableBtnFlag: true })
     this.props.disableButtonsAtVoteScreen()
     this.props.navigation.navigate(`StatusScreen`)
@@ -55,13 +47,12 @@ export default class PartiesContainer extends Component {
 
   eachItem(partyName, index) {
     return (
-      <View>
-        <PartyToChooseItem
-          partyName={partyName}
-          disableButtonsFunc={this.disableButtonsFunc}
-          isDisabled={this.props.isDisabled}
-        />
-      </View>
+      <PartyToChooseItem
+        key={index}
+        partyName={partyName}
+        disableButtonsFunc={this.disableButtonsFunc}
+        isDisabled={this.props.isDisabled}
+      />
     )
   }
 
@@ -69,12 +60,9 @@ export default class PartiesContainer extends Component {
     return (
       <View>
         <View style={styles.container}>{this.state.partiesNames.map(this.eachItem)}</View>
-        {this.state.disableBtnFlag ? (
-          <View style={styles.messageStyle}>
-            <Text>You already voted..</Text>
-          </View>
-        ) : null}
       </View>
     )
   }
 }
+
+export default PartiesContainer

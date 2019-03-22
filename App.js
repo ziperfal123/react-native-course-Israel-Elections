@@ -6,7 +6,7 @@ import StatusScreen from './screens/StatusScreen'
 // import Header from './Components/Header'
 
 const styles = StyleSheet.create({
-  bla: {
+  safeAreaStyle: {
     flex: 1,
     backgroundColor: '#87c0cd'
   }
@@ -21,7 +21,7 @@ export default class App extends Component {
   }
   render() {
     return (
-      <SafeAreaView style={styles.bla}>
+      <SafeAreaView style={styles.safeAreaStyle}>
         <AppContainer uriPrefix="/app" />
       </SafeAreaView>
     )

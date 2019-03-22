@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, ScrollView } from 'react-native'
+import { StyleSheet, View, ScrollView, Text } from 'react-native'
 import Header from '../Components/Header'
 import PartiesContainer from '../Components/PartiesContainer'
 
@@ -11,10 +11,24 @@ const styles = StyleSheet.create({
     height: 1000,
     justifyContent: 'flex-start',
     backgroundColor: '#33313b'
+  },
+  messageStyle: {
+    width: '100%',
+    height: 40,
+    backgroundColor: '#a43737',
+    position: 'relative',
+    alignItems: 'center',
+    marginBottom: 6
+  },
+  messageTextStyle: {
+    marginTop: 5,
+    fontSize: 20,
+    fontFamily: 'Futura',
+    color: '#e9e4e6'
   }
 })
 
-export default class VoteScreen extends Component {
+class VoteScreen extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -25,13 +39,21 @@ export default class VoteScreen extends Component {
   }
 
   disableButtonsAtVoteScreen() {
-    this.setState({ isDisabled: true })
+    setTimeout(() => {
+      this.setState({ isDisabled: true })
+    }, 600)
   }
 
   render() {
     return (
       <View style={styles.container}>
         <Header navigation={this.props.navigation} screenToGo="StatusScreen" />
+        {this.state.isDisabled ? (
+          <View style={styles.messageStyle}>
+            <Text style={styles.messageTextStyle}>You can vote only once</Text>
+          </View>
+        ) : null}
+
         <ScrollView>
           <PartiesContainer
             navigation={this.props.navigation}
@@ -43,3 +65,5 @@ export default class VoteScreen extends Component {
     )
   }
 }
+
+export default VoteScreen

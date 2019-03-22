@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View } from 'react-native'
 import PartyResultItem from './PartyResultItem'
 
-export default class PartiesResultContainer extends Component {
+class PartiesResultContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -42,14 +42,12 @@ export default class PartiesResultContainer extends Component {
   eachItem(party, index) {
     let votesPresentage = (party[1] / this.state.totalVotes) * 100
     votesPresentage = parseFloat(votesPresentage).toFixed(1)
-    return (
-      <View>
-        <PartyResultItem partyName={party[0]} partyScore={votesPresentage} />
-      </View>
-    )
+    return <PartyResultItem partyName={party[0]} partyScore={votesPresentage} key={index} />
   }
 
   render() {
     return <View>{this.state.partiesResultsList.map(this.eachItem)}</View>
   }
 }
+
+export default PartiesResultContainer
