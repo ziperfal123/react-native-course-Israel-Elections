@@ -11,9 +11,9 @@ const styles = StyleSheet.create({
   }
 })
 
-export default class App extends Component {
-  constructor(props) {
-    super(props)
+class App extends Component {
+  constructor() {
+    super()
     this.state = {
       textContent: 'status'
     }
@@ -42,3 +42,5 @@ const AppStackNavigator = createStackNavigator({
   }
 })
 const AppContainer = createAppContainer(AppStackNavigator)
+
+export default App

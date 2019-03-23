@@ -3,8 +3,8 @@ import { View } from 'react-native'
 import PartyResultItem from './PartyResultItem'
 
 class PartiesResultContainer extends Component {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
     this.state = {
       partiesResultsList: [],
       totalVotes: Number

@@ -14,10 +14,10 @@ const styles = StyleSheet.create({
   }
 })
 
-const StatusScreen = props => {
+const StatusScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Header navigation={props.navigation} screenToGo="VoteScreen" />
+      <Header navigation={navigation} screenToGo="VoteScreen" />
       <ScrollView>
         <PartiesResultContainer />
       </ScrollView>

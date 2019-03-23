@@ -50,7 +50,7 @@ class VoteScreen extends Component {
         <Header navigation={this.props.navigation} screenToGo="StatusScreen" />
         {this.state.isDisabled ? (
           <View style={styles.messageStyle}>
-            <Text style={styles.messageTextStyle}>You can vote only once</Text>
+            <Text style={styles.messageTextStyle}>You can only vote once</Text>
           </View>
         ) : null}
 

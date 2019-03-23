@@ -42,7 +42,7 @@ class PartyResultItem extends Component {
   componentDidMount() {
     Animated.timing(this.fadeAnimation, {
       toValue: 1,
-      duration: 180,
+      duration: 160,
       useNativeDriver: true
     }).start()
   }
