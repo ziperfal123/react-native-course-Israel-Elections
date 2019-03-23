@@ -1,5 +1,5 @@
-import React from 'react'
-import { View, Text, Image, StyleSheet } from 'react-native'
+import React, { Component } from 'react'
+import { View, Text, Image, StyleSheet, Animated } from 'react-native'
 import ImagesPaths from './ImagesPaths'
 
 /* ..styles.. */
@@ -33,14 +33,31 @@ const styles = StyleSheet.create({
   }
 })
 
-const PartyResultItem = props => {
-  const partyName = props.partyName.replace(/-/g, '')
-  return (
-    <View style={styles.itemContainer}>
-      <Image style={styles.imageStyle} source={ImagesPaths.peoplePics[partyName]} />
-      <Text style={styles.textStyle}>{props.partyName}</Text>
-      <Text style={styles.scoreStyle}>{props.partyScore}%</Text>
-    </View>
-  )
+class PartyResultItem extends Component {
+  constructor(props) {
+    super(props)
+    this.fadeAnimation = new Animated.Value(0)
+  }
+
+  componentDidMount() {
+    Animated.timing(this.fadeAnimation, {
+      toValue: 1,
+      duration: 180,
+      useNativeDriver: true
+    }).start()
+  }
+
+  render() {
+    const partyName = this.props.partyName.replace(/-/g, '')
+    return (
+      <View>
+        <Animated.View style={[styles.itemContainer, { opacity: this.fadeAnimation }]}>
+          <Image style={styles.imageStyle} source={ImagesPaths.peoplePics[partyName]} />
+          <Text style={styles.textStyle}>{this.props.partyName}</Text>
+          <Text style={styles.scoreStyle}>{this.props.partyScore}%</Text>
+        </Animated.View>
+      </View>
+    )
+  }
 }
 export default PartyResultItem

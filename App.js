@@ -3,7 +3,6 @@ import { StyleSheet } from 'react-native'
 import { createAppContainer, createStackNavigator, SafeAreaView } from 'react-navigation'
 import VoteScreen from './screens/VoteScreen'
 import StatusScreen from './screens/StatusScreen'
-// import Header from './Components/Header'
 
 const styles = StyleSheet.create({
   safeAreaStyle: {
@@ -32,14 +31,12 @@ const AppStackNavigator = createStackNavigator({
   VoteScreen: {
     screen: VoteScreen,
     navigationOptions: {
-      // hedaer: <Header navigation={props.navigation} screenToGo='VoteScreen'/>
       header: null
     }
   },
   StatusScreen: {
     screen: StatusScreen,
     navigationOptions: {
-      // hedaer: <Header navigation={props.navigation} screenToGo='StatusScreen'/>
       header: null
     }
   }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View, Alert } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import PartyToChooseItem from './PartyToChooseItem'
 
 /*..Styles..*/
